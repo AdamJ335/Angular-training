@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FavouriteChangedEventArgs } from './favourite/favourite.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,45 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'hello-world';
+  
+  courses:any;
+
+  loadCourses(){
+    this.courses = [
+      {id: 1, name: 'course1'},
+      {id: 2, name: 'course2'},
+      {id: 3, name: 'course3'}
+    ];
+  }
+
+  trackCourse(index:number, course:any){
+    return course ? course.id: undefined;
+  }
+
+  // onAdd(){
+  //   this.courses.push({id: 4, name: 'course4'});
+  // }
+  // onChange(course:any){
+  //   course.name = "UPDATED";
+  //   let index = this.courses.indexOf(course);
+  //   this.courses.splice(index, 1);
+  // }
+  
+  //viewMode = 'somethingElse';
+
+ 
+
+  // post = {
+  //   title: "Title",
+  //   isFavourite: true
+  // }
+  // tweet = {
+  //   body: '...',
+  //   likesCount: 10,
+  //   isLiked: true
+  // }
+
+  // onFavouriteChange(eventArgs: FavouriteChangedEventArgs) {
+  //   console.log("Favourite changed: ", eventArgs);
+  // }
 }
