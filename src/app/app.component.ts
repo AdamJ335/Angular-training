@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { FavouriteChangedEventArgs } from './favourite/favourite.component';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,20 +6,29 @@ import { FavouriteChangedEventArgs } from './favourite/favourite.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
-  courses:any;
 
-  loadCourses(){
-    this.courses = [
-      {id: 1, name: 'course1'},
-      {id: 2, name: 'course2'},
-      {id: 3, name: 'course3'}
-    ];
+  task = {
+    title: "Review applications",
+    assignee: {
+      name: "John Smith"
+    }
   }
+    //canSave = true;
 
-  trackCourse(index:number, course:any){
-    return course ? course.id: undefined;
-  }
+
+  // courses:any;
+
+  // loadCourses(){
+  //   this.courses = [
+  //     {id: 1, name: 'course1'},
+  //     {id: 2, name: 'course2'},
+  //     {id: 3, name: 'course3'}
+  //   ];
+  // }
+
+  // trackCourse(index:number, course:any){
+  //   return course ? course.id: undefined;
+  // }
 
   // onAdd(){
   //   this.courses.push({id: 4, name: 'course4'});
@@ -30,10 +38,10 @@ export class AppComponent {
   //   let index = this.courses.indexOf(course);
   //   this.courses.splice(index, 1);
   // }
-  
+
   //viewMode = 'somethingElse';
 
- 
+
 
   // post = {
   //   title: "Title",
