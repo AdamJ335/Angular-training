@@ -16,10 +16,7 @@ export class PostsComponent implements OnInit{
     this.service.getPosts()
       .subscribe((response) => {
         this.posts = response as any[];
-      },error => {
-        alert("An unexpected error occured.");
-        console.log(error);
-      })
+      });
   }
   constructor(private service: PostService) {
   }
@@ -36,9 +33,9 @@ export class PostsComponent implements OnInit{
         if(error instanceof BadInput){
            //this.form.setErrors(error.originalError)
         } else {
-          alert("An unexpected error occured.");
-          console.log(error);
+          throw error;
         }
+
       });
   }
 
@@ -46,24 +43,22 @@ export class PostsComponent implements OnInit{
     this.service.updatePost(post)
       .subscribe(response => {
         console.log(response);
-      },(error: Response) => {
-        alert("An unexpected error occured.");
-        console.log(error);
       });
   }
   deletePost(post: any){
-    //this.service.deletePost(321321321321425)
+    //this.service.deletePost('')
     this.service.deletePost(post.id)
       .subscribe(response => {
         let index = this.posts.indexOf(post);
         this.posts.splice(index, 1);
 
       },(error: AppError) => {
+        console.log(error instanceof NotFoundError);
         if(error instanceof NotFoundError){
           alert("This post has already been deleted");
-        } else {
-          alert("An unexpected error occured.");
           console.log(error);
+        } else {
+          throw error;
         }
 
       });
