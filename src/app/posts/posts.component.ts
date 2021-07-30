@@ -8,12 +8,14 @@ import {PostService} from "../services/post.service";
 })
 export class PostsComponent implements OnInit{
   posts: any[] = [];
-  private url = 'http://jsonplaceholder.typicode.com/posts';
 
   ngOnInit(){
     this.service.getPosts()
       .subscribe((response) => {
         this.posts = response as any[];
+      },error => {
+        alert("An unexpected error occured.");
+        console.log(error);
       })
   }
   constructor(private service: PostService) {
@@ -27,6 +29,9 @@ export class PostsComponent implements OnInit{
         post.id = response;
         this.posts.splice(0, 0, post);
         //console.log(response);
+      },error => {
+        alert("An unexpected error occured.");
+        console.log(error);
       });
   }
 
@@ -34,6 +39,9 @@ export class PostsComponent implements OnInit{
     this.service.updatePost(post)
       .subscribe(response => {
         console.log(response);
+      },error => {
+        alert("An unexpected error occured.");
+        console.log(error);
       });
   }
   deletePost(post: any){
@@ -41,6 +49,9 @@ export class PostsComponent implements OnInit{
       .subscribe(response => {
         let index = this.posts.indexOf(post);
         this.posts.splice(index, 1);
+      },error => {
+        alert("An unexpected error occured.");
+        console.log(error);
       });
   }
 
