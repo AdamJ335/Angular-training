@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {catchError, map} from "rxjs/operators";
+import {catchError, map, retry} from "rxjs/operators";
 import {throwError} from 'rxjs';
 import {NotFoundError} from "../common/not-found-error";
 import {AppError} from "../common/app-error";
@@ -12,7 +12,7 @@ import {BadInput} from "../common/bad-input";
 })
 export class DataService {
 
-  constructor(private url:string, private http: HttpClient) { }
+  constructor(@Inject('string')private url:string, private http: HttpClient) { }
 
   getAll(){
     return this.http.get(this.url).pipe(
@@ -35,8 +35,10 @@ export class DataService {
   }
   delete(id:any){
     return this.http.delete(this.url + id).pipe(
-      catchError((this.handleError)), map(response => response)
-    );
+      catchError((this.handleError)),
+      map(response => response),
+      retry(3)
+    );//.toPromise();
 
   }
 

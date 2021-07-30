@@ -24,6 +24,12 @@ import {PostsComponent} from './posts/posts.component';
 import {HttpClientModule} from "@angular/common/http";
 import {PostService} from "./services/post.service";
 import {AppErrorHandler} from "./common/app-error-handler";
+import {FollowersComponent} from './followers/followers.component';
+import {FollowerService} from "./services/follower.service";
+import {NavbarComponent} from './navbar/navbar.component';
+import {HomeComponent} from './home/home.component';
+import {ProfileComponent} from './profile/profile.component';
+import {NotFoundComponent} from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +48,12 @@ import {AppErrorHandler} from "./common/app-error-handler";
     CourseFormComponent,
     NewCourseFormComponent,
     NewPasswordFormComponent,
-    PostsComponent
+    PostsComponent,
+    FollowersComponent,
+    NavbarComponent,
+    HomeComponent,
+    ProfileComponent,
+    NotFoundComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -55,6 +66,7 @@ import {AppErrorHandler} from "./common/app-error-handler";
     CoursesService,
     AuthorService,
     PostService,
+    FollowerService,
     {provide: ErrorHandler, useClass: AppErrorHandler}
   ],
   bootstrap: [AppComponent]
