@@ -16,4 +16,14 @@ export class PostsComponent {
       })
   }
 
+  createPost(input: HTMLInputElement) {
+    let post: any = {title: input.value};
+    this.http.post(this.url, JSON.stringify(post))
+      .subscribe(response => {
+        post.id = response;
+        this.posts.splice(0, 0, post);
+        //console.log(response);
+      });
+  }
+
 }
