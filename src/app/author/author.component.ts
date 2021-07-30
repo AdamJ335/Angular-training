@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthorService } from '../author.service';
+import {Component, OnInit} from '@angular/core';
+import {AuthorService} from '../services/author.service';
 
 @Component({
   selector: 'authors',
@@ -10,7 +10,7 @@ export class AuthorComponent implements OnInit {
   authors;
 
 
-  constructor(service: AuthorService) { 
+  constructor(service: AuthorService) {
     this.authors = service.getAuthors();
   }
 

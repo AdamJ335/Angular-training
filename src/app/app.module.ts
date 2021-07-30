@@ -6,9 +6,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CoursesComponent} from './courses.component';
 import {CourseComponent} from './course/course.component';
-import {CoursesService} from './courses.service';
+import {CoursesService} from './services/courses.service';
 import {AuthorComponent} from './author/author.component';
-import {AuthorService} from './author.service';
+import {AuthorService} from './services/author.service';
 import {SummaryPipe} from './summary.pipe';
 import {FavouriteComponent} from './favourite/favourite.component';
 import {PanelComponent} from './panel/panel.component';
@@ -22,6 +22,7 @@ import {NewCourseFormComponent} from './new-course-form/new-course-form.componen
 import {NewPasswordFormComponent} from './new-password-form/new-password-form.component';
 import {PostsComponent} from './posts/posts.component';
 import {HttpClientModule} from "@angular/common/http";
+import {PostService} from "./services/post.service";
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {HttpClientModule} from "@angular/common/http";
   ],
   providers: [
     CoursesService,
-    AuthorService
+    AuthorService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })
