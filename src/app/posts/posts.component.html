@@ -1,16 +1,28 @@
-<input
-  (keyup.enter)="createPost(title)" #title
-  type="text" class="form-control">
 <ul class="list-group">
+  <li
+    class="list-group-item list-group-item-warning">
+    <button
+      (click)="updatePost('')"
+      class="btn btn-secondary btn-sm ml-1 mr-1">Update
+    </button>
+    <button
+      (click)="deletePost({id: ''})"
+      class="btn btn-secondary btn-sm ml-1 mr-1">Delete
+    </button>
+    404 ERROR HANDLER EXAMPLE FOR API ENDPOINT
+  </li>
+
   <li
     *ngFor="let post of posts"
     class="list-group-item">
     <button
       (click)="updatePost(post)"
-      class="btn btn-default btn-sm">Update</button>
+      class="btn btn-secondary btn-sm ml-1 mr-1">Update
+    </button>
     <button
       (click)="deletePost(post)"
-      class="btn btn-default btn-sm">Delete</button>
-    {{post.title}}
+      class="btn btn-secondary btn-sm ml-1 mr-1">Delete
+    </button>
+    {{ post.title }}
   </li>
 </ul>
