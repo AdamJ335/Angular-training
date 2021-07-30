@@ -20,6 +20,8 @@ import {CourseFormComponent} from './course-form/course-form.component';
 import {SignupFormComponent} from './signup-form/signup-form.component';
 import {NewCourseFormComponent} from './new-course-form/new-course-form.component';
 import {NewPasswordFormComponent} from './new-password-form/new-password-form.component';
+import {PostsComponent} from './posts/posts.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -37,12 +39,14 @@ import {NewPasswordFormComponent} from './new-password-form/new-password-form.co
     ContactFormComponent,
     CourseFormComponent,
     NewCourseFormComponent,
-    NewPasswordFormComponent
+    NewPasswordFormComponent,
+    PostsComponent
   ],
   imports: [
     ReactiveFormsModule,
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [
