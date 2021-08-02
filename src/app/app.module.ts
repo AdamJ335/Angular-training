@@ -54,7 +54,7 @@ import {RouterModule} from '@angular/router';
     NavbarComponent,
     HomeComponent,
     ProfileComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     ReactiveFormsModule,
