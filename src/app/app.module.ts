@@ -31,6 +31,7 @@ import {HomeComponent} from './home/home.component';
 import {ProfileComponent} from './profile/profile.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {RouterModule} from '@angular/router';
+import {DatesComponent} from './dates/dates.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {RouterModule} from '@angular/router';
     HomeComponent,
     ProfileComponent,
     NotFoundComponent,
+    DatesComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -66,6 +68,10 @@ import {RouterModule} from '@angular/router';
       {
         path: '',
         component: HomeComponent
+      },
+      {
+        path: 'archive/:year/:month',
+        component: DatesComponent
       },
       {
         path: 'followers/:id/:username',

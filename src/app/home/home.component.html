@@ -1,1 +1,8 @@
-<p>home works!</p>
+<h1>Home Page</h1>
+<ul>
+  <li *ngFor="let date of dates">
+    <a
+      [routerLink]="['/archive', date.year, date.month]"
+      >{{date.year +'/' + date.month}}</a>
+  </li>
+</ul>
