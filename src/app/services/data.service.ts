@@ -15,8 +15,8 @@ export class DataService {
   constructor(@Inject('string')private url:string, private http: HttpClient) { }
 
   getAll(){
-    return this.http.get(this.url).pipe(
-      map(response => response)
+    return this.http.get(this.url)
+      .pipe(map(response => response)
     );
   }
 
