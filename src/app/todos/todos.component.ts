@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {animate, style, transition, trigger} from "@angular/animations";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'todos',
@@ -7,14 +7,13 @@ import {animate, style, transition, trigger} from "@angular/animations";
   styleUrls: ['./todos.component.css'],
   animations: [
     trigger('fade', [
-      //state(),
+      state('void', style({opacity: 0})),
       transition('void => *', [
-        style({ opacity: 0}),
         animate(500)
       ]),
 
       transition('* => void', [
-        animate(500,  style({opacity: 0}))
+        animate(500)
       ])
     ])
   ]
