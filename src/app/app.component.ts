@@ -27,4 +27,9 @@ export class AppComponent{
     this.db.object('/courses/'+ course.key)
       .set((course as SnapshotAction<unknown>).payload.val() + ' UPDATED');
   }
+  delete(course: any){
+    this.db.object('/courses/'+ course.key)
+      .remove()
+      .then(x=> console.log('DELETED'))
+  }
 }
