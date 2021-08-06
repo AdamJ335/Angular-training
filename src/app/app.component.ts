@@ -6,15 +6,10 @@ import {AngularFireDatabase} from "@angular/fire/database";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  courses: any[] = [];
-
+export class AppComponent{
+  courses$: any;
   constructor(db: AngularFireDatabase) {
-    db.list('/courses')
-      .valueChanges()
-      .subscribe(courses => {
-        this.courses = courses;
-        console.log(this.courses);
-      });
+
   }
+
 }
