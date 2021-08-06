@@ -20,7 +20,7 @@ export let slide = trigger('slide', [
     animate(500)
   ]),
 
-  transition(':leave',
+   transition(':leave',
     useAnimation(bounceOutLeftAnimation)
   )
 ]);
@@ -42,6 +42,6 @@ export let fade = trigger('fade', [
   ),
 
   transition(':leave', [
-    animate(2000, style({ opacity: 0 }))
+    animate(500, style({ opacity: 0 }))
   ])
 ]);
