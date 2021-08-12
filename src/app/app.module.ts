@@ -23,6 +23,10 @@ import {environment} from "../environments/environment";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {LoginComponent} from './login/login.component';
 import {AuthService} from "./auth.service";
+import {AuthGuardService} from "./auth-guard.service";
+import {CheckOutComponent} from './check-out/check-out.component';
+import {OrdersSuccessComponent} from './orders-success/orders-success.component';
+import {ProductsComponent} from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,9 @@ import {AuthService} from "./auth.service";
     AdminOrdersComponent,
     AdminProductsComponent,
     LoginComponent,
+    CheckOutComponent,
+    OrdersSuccessComponent,
+    ProductsComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -52,25 +59,45 @@ import {AuthService} from "./auth.service";
         component: HomeComponent
       },
       {
-        path: 'shoppingCart',
+        path: 'products',
+        component: ProductsComponent
+      },
+      {
+        path: 'shopping/cart',
         component: ShoppingCartComponent
-      },
-      {
-        path: 'my/orders',
-        component: OrdersComponent
-      },
-      {
-        path: 'admin/orders',
-        component: AdminOrdersComponent
-      },
-      {
-        path: 'admin/products',
-        component: AdminProductsComponent
       },
       {
         path: 'login',
         component: LoginComponent
       },
+
+
+      {
+        path: 'checkout',
+        component: CheckOutComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'order-success',
+        component: OrdersSuccessComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'my/orders',
+        component: OrdersComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'admin/orders',
+        component: AdminOrdersComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'admin/products',
+        component: AdminProductsComponent,
+        canActivate: [AuthGuardService]
+      },
+
       {
         path: '**',
         component: NotFoundComponent
@@ -81,6 +108,7 @@ import {AuthService} from "./auth.service";
   ],
   providers: [
     AuthService,
+    AuthGuardService,
   ],
   bootstrap: [AppComponent]
 })
