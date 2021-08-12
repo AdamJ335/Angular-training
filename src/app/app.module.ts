@@ -15,6 +15,12 @@ import {MaterialModule} from "./added-modules/material.module";
 import {OrdersComponent} from './orders/orders.component';
 import {AdminOrdersComponent} from './admin-orders/admin-orders.component';
 import {AdminProductsComponent} from './admin-products/admin-products.component';
+import {AngularFireModule} from "@angular/fire";
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import {AngularFireAuthModule} from "@angular/fire/auth";
+import {AngularFirestoreModule} from "@angular/fire/firestore";
+import {environment} from "../environments/environment";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
 
 @NgModule({
   declarations: [
@@ -30,6 +36,11 @@ import {AdminProductsComponent} from './admin-products/admin-products.component'
     ReactiveFormsModule,
     BrowserModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
