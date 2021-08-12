@@ -26,7 +26,9 @@
             <button mat-menu-item [routerLink]="['/admin/products']" routerLinkActive="router-link-active">
                 Manage Products
             </button>
-            <button mat-menu-item [routerLink]="['/']" routerLinkActive="router-link-active">
+            <button
+              (click)="logout()"
+              mat-menu-item [routerLink]="['/']" routerLinkActive="router-link-active">
                 Log Out
             </button>
         </mat-menu>
