@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {AuthService} from "./auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -6,54 +8,13 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  task = {
-    title: "Review applications",
-    assignee: {
-      name: "John Smith"
-    }
+  constructor(private auth: AuthService, router: Router){
+    auth.$user.subscribe(user => {
+      if(user) {
+        let returnUrl = localStorage.getItem('returnUrl');
+        // @ts-ignore
+        router.navigateByUrl(returnUrl).then();
+      }
+    })
   }
-    //canSave = true;
-
-
-  // courses:any;
-
-  // loadCourses(){
-  //   this.courses = [
-  //     {id: 1, name: 'course1'},
-  //     {id: 2, name: 'course2'},
-  //     {id: 3, name: 'course3'}
-  //   ];
-  // }
-
-  // trackCourse(index:number, course:any){
-  //   return course ? course.id: undefined;
-  // }
-
-  // onAdd(){
-  //   this.courses.push({id: 4, name: 'course4'});
-  // }
-  // onChange(course:any){
-  //   course.name = "UPDATED";
-  //   let index = this.courses.indexOf(course);
-  //   this.courses.splice(index, 1);
-  // }
-
-  //viewMode = 'somethingElse';
-
-
-
-  // post = {
-  //   title: "Title",
-  //   isFavourite: true
-  // }
-  // tweet = {
-  //   body: '...',
-  //   likesCount: 10,
-  //   isLiked: true
-  // }
-
-  // onFavouriteChange(eventArgs: FavouriteChangedEventArgs) {
-  //   console.log("Favourite changed: ", eventArgs);
-  // }
 }
