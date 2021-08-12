@@ -1,23 +1,27 @@
 <mat-toolbar color="primary">
-<!--    <div>-->
-<!--        <mat-icon>eco</mat-icon> e-Commerece Shop-->
-<!--    </div>-->
+    <div>
 
-    <!-- custom css to make space -->
-<!--    <div class="spacer"></div>-->
+      <a mat-button [routerLink]="['/']" routerLinkActive="router-link-active">
+        <mat-icon>eco</mat-icon>
+      </a>
+      Organic Shop
+    </div>
+
+<!--     custom css to make space -->
+    <div class="spacer"></div>
 
     <div>
         <a mat-button [routerLink]="['/shoppingCart']" routerLinkActive="router-link-active">
             Shopping Cart
         </a>
         <mat-menu #appMenu="matMenu">
-            <button mat-menu-item [routerLink]="['/orders']" routerLinkActive="router-link-active">
+            <button mat-menu-item [routerLink]="['/my/orders']" routerLinkActive="router-link-active">
                 My Orders
             </button>
-            <button mat-menu-item [routerLink]="['/adminOrders']" routerLinkActive="router-link-active">
+            <button mat-menu-item [routerLink]="['/admin/orders']" routerLinkActive="router-link-active">
                 Manage Orders
             </button>
-            <button mat-menu-item [routerLink]="['/adminProducts']" routerLinkActive="router-link-active">
+            <button mat-menu-item [routerLink]="['/admin/products']" routerLinkActive="router-link-active">
                 Manage Products
             </button>
             <button mat-menu-item [routerLink]="['/']" routerLinkActive="router-link-active">

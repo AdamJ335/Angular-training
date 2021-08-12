@@ -13,8 +13,8 @@ import {HomeComponent} from './home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./added-modules/material.module";
 import {OrdersComponent} from './orders/orders.component';
-import {AdminOrdersComponent} from './admin-orders/admin-orders.component';
-import {AdminProductsComponent} from './admin-products/admin-products.component';
+import {AdminOrdersComponent} from './admin/admin-orders/admin-orders.component';
+import {AdminProductsComponent} from './admin/admin-products/admin-products.component';
 import {AngularFireModule} from "@angular/fire";
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireAuthModule} from "@angular/fire/auth";
@@ -53,15 +53,15 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
         component: ShoppingCartComponent
       },
       {
-        path: 'orders',
+        path: 'my/orders',
         component: OrdersComponent
       },
       {
-        path: 'adminOrders',
+        path: 'admin/orders',
         component: AdminOrdersComponent
       },
       {
-        path: 'adminProducts',
+        path: 'admin/products',
         component: AdminProductsComponent
       },
       {
