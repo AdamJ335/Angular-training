@@ -17,31 +17,33 @@
             Shopping Cart
         </a>
         <a
-          *ngIf="!(auth.$user | async)"
+          *ngIf="!(appUser)"
           mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">
             Login
         </a>
 
 
     </div>
-        <div *ngIf="auth.$user | async as user;">
+        <div *ngIf="appUser">
         <mat-menu #appMenu="matMenu" >
           <button mat-menu-item [routerLink]="['/my/orders']" routerLinkActive="router-link-active">
             My Orders
           </button>
-          <button mat-menu-item [routerLink]="['/admin/orders']" routerLinkActive="router-link-active">
+          <ng-container *ngIf="appUser.isAdmin">
+            <button mat-menu-item [routerLink]="['/admin/orders']" routerLinkActive="router-link-active">
             Manage Orders
-          </button>
-          <button mat-menu-item [routerLink]="['/admin/products']" routerLinkActive="router-link-active">
-            Manage Products
-          </button>
+            </button>
+            <button mat-menu-item [routerLink]="['/admin/products']" routerLinkActive="router-link-active">
+              Manage Products
+            </button>
+          </ng-container>
           <button
             (click)="logout()"
             mat-menu-item [routerLink]="['/']" routerLinkActive="router-link-active">
             Log Out
           </button>
         </mat-menu>
-        <button mat-raised-button color="accent" [matMenuTriggerFor]="appMenu">{{user.displayName}}</button>
+        <button mat-raised-button color="accent" [matMenuTriggerFor]="appMenu">{{appUser.name}}</button>
         </div>
 
 
