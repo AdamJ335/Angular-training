@@ -13,25 +13,32 @@
     <div>
         <a mat-button [routerLink]="['/shoppingCart']" routerLinkActive="router-link-active">
             Shopping Cart
-        </a> <a mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">
+        </a>
+        <a
+          *ngIf="!user"
+          mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">
             Login
         </a>
-        <mat-menu #appMenu="matMenu">
-            <button mat-menu-item [routerLink]="['/my/orders']" routerLinkActive="router-link-active">
-                My Orders
-            </button>
-            <button mat-menu-item [routerLink]="['/admin/orders']" routerLinkActive="router-link-active">
-                Manage Orders
-            </button>
-            <button mat-menu-item [routerLink]="['/admin/products']" routerLinkActive="router-link-active">
-                Manage Products
-            </button>
-            <button
-              (click)="logout()"
-              mat-menu-item [routerLink]="['/']" routerLinkActive="router-link-active">
-                Log Out
-            </button>
-        </mat-menu>
-        <button mat-raised-button color="accent" [matMenuTriggerFor]="appMenu">Username</button>
+
+
     </div>
+      <div *ngIf="user">
+        <mat-menu #appMenu="matMenu" >
+          <button mat-menu-item [routerLink]="['/my/orders']" routerLinkActive="router-link-active">
+            My Orders
+          </button>
+          <button mat-menu-item [routerLink]="['/admin/orders']" routerLinkActive="router-link-active">
+            Manage Orders
+          </button>
+          <button mat-menu-item [routerLink]="['/admin/products']" routerLinkActive="router-link-active">
+            Manage Products
+          </button>
+          <button
+            (click)="logout()"
+            mat-menu-item [routerLink]="['/']" routerLinkActive="router-link-active">
+            Log Out
+          </button>
+        </mat-menu>
+        <button mat-raised-button color="accent" [matMenuTriggerFor]="appMenu">{{user.displayName}}</button>
+      </div>
 </mat-toolbar>
