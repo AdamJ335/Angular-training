@@ -22,6 +22,7 @@ import {AngularFirestoreModule} from "@angular/fire/firestore";
 import {environment} from "../environments/environment";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {LoginComponent} from './login/login.component';
+import {AuthService} from "./auth.service";
 
 @NgModule({
   declarations: [
@@ -78,7 +79,9 @@ import {LoginComponent} from './login/login.component';
     BrowserAnimationsModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
