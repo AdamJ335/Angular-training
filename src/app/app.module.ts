@@ -27,6 +27,7 @@ import {AuthGuardService} from "./auth-guard.service";
 import {CheckOutComponent} from './check-out/check-out.component';
 import {OrdersSuccessComponent} from './orders-success/orders-success.component';
 import {ProductsComponent} from './products/products.component';
+import {UserService} from "./user.service";
 
 @NgModule({
   declarations: [
@@ -109,6 +110,7 @@ import {ProductsComponent} from './products/products.component';
   providers: [
     AuthService,
     AuthGuardService,
+    UserService,
   ],
   bootstrap: [AppComponent]
 })
