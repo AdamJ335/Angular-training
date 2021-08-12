@@ -10,19 +10,21 @@
 <!--     custom css to make space -->
     <div class="spacer"></div>
 
+
+
     <div>
         <a mat-button [routerLink]="['/shoppingCart']" routerLinkActive="router-link-active">
             Shopping Cart
         </a>
         <a
-          *ngIf="!user"
+          *ngIf="!($user | async)"
           mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">
             Login
         </a>
 
 
     </div>
-      <div *ngIf="user">
+        <div *ngIf="$user | async as user;">
         <mat-menu #appMenu="matMenu" >
           <button mat-menu-item [routerLink]="['/my/orders']" routerLinkActive="router-link-active">
             My Orders
@@ -40,5 +42,7 @@
           </button>
         </mat-menu>
         <button mat-raised-button color="accent" [matMenuTriggerFor]="appMenu">{{user.displayName}}</button>
-      </div>
+        </div>
+
+
 </mat-toolbar>
