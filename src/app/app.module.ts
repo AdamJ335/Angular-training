@@ -21,6 +21,7 @@ import {AngularFireAuthModule} from "@angular/fire/auth";
 import {AngularFirestoreModule} from "@angular/fire/firestore";
 import {environment} from "../environments/environment";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
+import {LoginComponent} from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
     OrdersComponent,
     AdminOrdersComponent,
     AdminProductsComponent,
+    LoginComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -63,6 +65,10 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
       {
         path: 'admin/products',
         component: AdminProductsComponent
+      },
+      {
+        path: 'login',
+        component: LoginComponent
       },
       {
         path: '**',
