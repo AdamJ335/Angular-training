@@ -11,7 +11,7 @@ import {Observable, of} from "rxjs";
 })
 export class AuthService {
   userId!: any;
-  user$: Observable<firebase.User>;
+  user$: Observable<any>;
 
   constructor(private afAuth: AngularFireAuth,
               private route: ActivatedRoute,

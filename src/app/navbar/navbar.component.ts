@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit{
   async ngOnInit() {
     this.auth.appUser$.subscribe(appUser => {
       this.appUser = appUser;
-      console.log("appUser: " + appUser);
+      //console.log("appUser: " + appUser.name);
     });
   }
 
