@@ -29,6 +29,8 @@ import {OrdersSuccessComponent} from './orders-success/orders-success.component'
 import {ProductsComponent} from './products/products.component';
 import {UserService} from "./user.service";
 import {AdminAuthGuard} from "./admin-auth-guard.service";
+import {ProductFormComponent} from './admin/product-form/product-form.component';
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import {AdminAuthGuard} from "./admin-auth-guard.service";
     CheckOutComponent,
     OrdersSuccessComponent,
     ProductsComponent,
+    ProductFormComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -92,12 +95,17 @@ import {AdminAuthGuard} from "./admin-auth-guard.service";
       {
         path: 'admin/orders',
         component: AdminOrdersComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService, AdminAuthGuard]
+      },
+      {
+        path: 'admin/products/new',
+        component: ProductFormComponent,
+        canActivate: [AuthGuardService, AdminAuthGuard]
       },
       {
         path: 'admin/products',
         component: AdminProductsComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService, AdminAuthGuard]
       },
 
       {
@@ -107,6 +115,7 @@ import {AdminAuthGuard} from "./admin-auth-guard.service";
     ]),
     BrowserAnimationsModule,
     MaterialModule,
+    MatRadioModule,
   ],
   providers: [
     AuthService,

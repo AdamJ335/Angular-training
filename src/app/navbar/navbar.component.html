@@ -16,15 +16,17 @@
         <a mat-button [routerLink]="['/shopping/cart']" routerLinkActive="router-link-active">
             Shopping Cart
         </a>
+      <ng-template #anonymousUser>
         <a
-          *ngIf="!(appUser)"
-          mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">
-            Login
-        </a>
+        mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">
+        Login
+      </a>
+      </ng-template>
+
 
 
     </div>
-        <div *ngIf="appUser">
+        <ng-container *ngIf="appUser; else anonymousUser">
         <mat-menu #appMenu="matMenu" >
           <button mat-menu-item [routerLink]="['/my/orders']" routerLinkActive="router-link-active">
             My Orders
@@ -43,8 +45,14 @@
             Log Out
           </button>
         </mat-menu>
-        <button mat-raised-button color="accent" [matMenuTriggerFor]="appMenu">{{appUser.name}}</button>
-        </div>
+        <button mat-button color="accent" [matMenuTriggerFor]="appMenu">{{appUser.name}}</button>
+        </ng-container>
 
 
 </mat-toolbar>
+
+<label class="switch">
+  <input type="checkbox" id="adminSwitch" onclick="toggleAdmin()">
+  <span class="slider round"></span>
+</label>
+<!--<button (click)="addToDBTest()">test</button>-->
