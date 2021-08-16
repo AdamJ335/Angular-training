@@ -5,6 +5,8 @@ import {MatPaginator} from "@angular/material/paginator";
 export class TableView {
   displayedColumns: any[];
   dataSource: MatTableDataSource<any>;
+  products: any[] = [];
+  filteredProducts: any[] = [];
 
   constructor(displayedColumns: any[]) {
     this.displayedColumns = displayedColumns;

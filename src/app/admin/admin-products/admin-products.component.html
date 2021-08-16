@@ -2,7 +2,7 @@
 <p>
   <a type="button"
      class="btn btn-primary"
-     routerLink="/admin/product-form">New Product</a>
+     routerLink="/admin/products/new">New Product</a>
 </p>
 
 <div class="mat-elevation-z8 searchHeader">
@@ -34,7 +34,7 @@
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let product">
-        <a [routerLink]="['/admin/product-form/', product.id]">
+        <a [routerLink]="['/admin/products/', product.id]">
           Edit
         </a>
       </td>
@@ -47,5 +47,5 @@
 <p>
   <a type="button"
      class="btn btn-primary"
-     routerLink="/admin/product-form">New Product</a>
+     routerLink="/admin/products/new">New Product</a>
 </p>
