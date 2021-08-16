@@ -19,4 +19,8 @@ export class ProductService {
       // @ts-ignore
       .pipe(map(actions => actions.map(a => ({ key: a.key, ...a.payload.val() }))));
   }
+
+  getProduct(productId:any){
+    return this.db.object('/products/' + productId);
+  }
 }
