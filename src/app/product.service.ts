@@ -17,7 +17,13 @@ export class ProductService {
     return this.db.list('/products')
       .snapshotChanges()
       // @ts-ignore
-      .pipe(map(actions => actions.map(a => ({ key: a.key, ...a.payload.val() }))));
+      .pipe(map(actions => actions.
+        map(this.documentToDomainObject)));
+  }
+  private documentToDomainObject = (c: any) => {
+    const data = c.payload.exportVal();
+    const id = c.key;
+    return {id, data};
   }
 
   getProduct(productId:any){
