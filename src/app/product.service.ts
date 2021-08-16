@@ -28,6 +28,6 @@ export class ProductService {
     return this.db.object('/products/' + productId).update(product).then();
   }
   delete(productId:any){
-    //return this.db.object('/products/' + productId).remove(productId).then();
+    return this.db.object('/products/' + productId).remove().then();
   }
 }
