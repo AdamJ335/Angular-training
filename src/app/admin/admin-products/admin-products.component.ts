@@ -1,34 +1,44 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProductService} from "../../product.service";
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator} from "@angular/material/paginator";
+import {MatSort} from "@angular/material/sort";
 import {Subscription} from "rxjs";
+import {ProductService} from "../../product.service";
+import {TableView} from "../../models/tableView";
 
 @Component({
   selector: 'app-admin-products',
   templateUrl: './admin-products.component.html',
-  styleUrls: ['./admin-products.component.css']
+  styleUrls: ['./admin-products.component.scss']
 })
-export class AdminProductsComponent implements OnInit, OnDestroy{
-  // @ts-ignore
-  products: Product[];
-  // @ts-ignore
-  filteredProducts: any[];
-  subscription: Subscription;
+export class AdminProductsComponent implements OnInit, OnDestroy, AfterViewInit {
+  tableView!: TableView;
+  subscription!: Subscription;
+  displayedColumns = ['position', 'title', 'price' , 'edit'];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService) { }
+
+  ngOnInit() {
+    this.tableView = new TableView(this.displayedColumns);
     this.subscription = this.productService.getAll()
-      .subscribe(products => this.filteredProducts = this.products = products);
+      .subscribe(products => {
+        this.tableView.init(products, this.sort);
+      });
+
+    this.tableView.initFilter();
   }
 
-  filter(query:string){
-    this.filteredProducts = (query) ?
-      this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
-      this.products;
+  ngAfterViewInit() {
+    this.tableView.afterViewInit(this.paginator);
   }
 
-  ngOnInit(): void {
-  }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  applyFilter(query: string) {
+    this.tableView.applyFilter(query);
   }
 
 }

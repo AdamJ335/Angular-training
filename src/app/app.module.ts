@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CustomFormsModule} from "ng2-validation";
-import {DataTableModule} from "@ismatjon/angular-data-table";
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -35,6 +34,11 @@ import {ProductFormComponent} from './admin/product-form/product-form.component'
 import {MatRadioModule} from "@angular/material/radio";
 import {CategoryService} from "./category.service";
 import {ProductService} from "./product.service";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
+import {MatInputModule} from "@angular/material/input";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -63,7 +67,6 @@ import {ProductService} from "./product.service";
     AngularFireStorageModule,
     HttpClientModule,
     AppRoutingModule,
-    DataTableModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -127,6 +130,11 @@ import {ProductService} from "./product.service";
     BrowserAnimationsModule,
     MaterialModule,
     MatRadioModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatInputModule,
+    MatSortModule,
   ],
   providers: [
     AuthService,

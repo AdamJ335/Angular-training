@@ -1,0 +1,23 @@
+p { padding-bottom: 10px;}
+
+table{
+  width: 100%;
+}
+.searchHeader {
+  padding: 10px;
+}
+
+.searchInput {
+  text-align: center;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background-color: #c1c6c1;
+}
+
+.searchInput:focus {
+  background-color: #afb5af;
+}
