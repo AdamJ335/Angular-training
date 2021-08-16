@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CustomFormsModule} from "ng2-validation";
+import {DataTableModule} from "@ismatjon/angular-data-table";
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -62,6 +63,7 @@ import {ProductService} from "./product.service";
     AngularFireStorageModule,
     HttpClientModule,
     AppRoutingModule,
+    DataTableModule,
     RouterModule.forRoot([
       {
         path: '',
