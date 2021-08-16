@@ -9,7 +9,7 @@ import {Subscription} from "rxjs";
 })
 export class AdminProductsComponent implements OnInit, OnDestroy{
   // @ts-ignore
-  products: any[];
+  products: Product[];
   // @ts-ignore
   filteredProducts: any[];
   subscription: Subscription;
