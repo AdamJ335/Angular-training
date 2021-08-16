@@ -9,7 +9,11 @@ import {UserService} from "./user.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private userService: UserService, private auth: AuthService, router: Router){
+  title = "oshop";
+
+  constructor(private userService: UserService,
+              private auth: AuthService,
+              private router: Router){
     auth.user$.subscribe(user => {
       if(!user) { return}
         //console.log(user.uid);

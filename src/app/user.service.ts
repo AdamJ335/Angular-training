@@ -15,10 +15,9 @@ export class UserService {
     //   test: "test"
     // }).then();
 
-    this.db.object('/users/' + user.uid).set({
+    this.db.object('/users/' + user.uid).update({
       name: user.displayName,
       email: user.email,
-      isAdmin: true,
     }).then();
   }
 

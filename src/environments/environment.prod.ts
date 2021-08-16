@@ -3,7 +3,7 @@ export const environment = {
   firebase: {
     apiKey: "AIzaSyBSiz8hEhoO-75PvF7q2NBAc2LbBZ6zIKY",
     authDomain: "angularshp.firebaseapp.com",
-    databaseUrl: "https://angularshp-default-rtdb.europe-west1.firebasedatabase.app/",
+    databaseURL: "https://angularshp-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "angularshp",
     storageBucket: "angularshp.appspot.com",
     messagingSenderId: "974282666724",
