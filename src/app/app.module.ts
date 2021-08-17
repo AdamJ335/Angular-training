@@ -39,6 +39,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatInputModule} from "@angular/material/input";
 import {MatSortModule} from "@angular/material/sort";
 import {ProductFilterComponent} from './products/product-filter/product-filter.component';
+import {ProductCardComponent} from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {ProductFilterComponent} from './products/product-filter/product-filter.c
     ProductsComponent,
     ProductFormComponent,
     ProductFilterComponent,
+    ProductCardComponent,
   ],
   imports: [
     ReactiveFormsModule,
