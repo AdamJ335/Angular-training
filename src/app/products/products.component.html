@@ -4,24 +4,37 @@
     <product-filter [category]="category"></product-filter>
   </div>
 </div>
-<div class="col">
-    <div class="row-cols-3 row">
-
-      <ng-container *ngFor="let p of filteredProducts; let i = index">
-        <div class="col">
-
-          <product-card [product]="p.data"></product-card>
-
-        </div>
-
+<div class="cards-container">
+  <div class="col">
+    <ng-container *ngFor="let p of filteredProducts; let i = index">
+      <div class="row">
+        <product-card [product]="p.data"></product-card>
         <div *ngIf="(i+1)%2 === 0" class="w-100"></div>
-      </ng-container>
+      </div>
 
-    </div>
+    </ng-container>
 
-
+  </div>
 
 </div>
+<!--<div class="col">-->
+<!--    <div class="row-cols-3 row">-->
+
+<!--      <ng-container *ngFor="let p of filteredProducts; let i = index">-->
+<!--        <div class="col">-->
+
+<!--          <product-card [product]="p.data"></product-card>-->
+
+<!--        </div>-->
+
+<!--        <div *ngIf="(i+1)%2 === 0" class="w-100"></div>-->
+<!--      </ng-container>-->
+
+<!--    </div>-->
+
+
+
+<!--</div>-->
 
 
 
