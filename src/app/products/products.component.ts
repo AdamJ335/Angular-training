@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../product.service";
 import {ActivatedRoute} from "@angular/router";
-import {CategoryService} from "../category.service";
 import {switchMap} from "rxjs/operators";
 
 @Component({
@@ -14,13 +13,11 @@ export class ProductsComponent implements OnInit {
 
   products: any[] = [];
   filteredProducts: any[] = [];
-  categories$: any;
   category: any;
 
   constructor(private route: ActivatedRoute,
-              private productService: ProductService,
-              private categoryService: CategoryService) {
-    this.categories$ = this.categoryService.getCategories();
+              private productService: ProductService) {
+
   }
 
   async ngOnInit() {

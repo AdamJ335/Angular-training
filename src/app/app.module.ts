@@ -38,6 +38,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {MatInputModule} from "@angular/material/input";
 import {MatSortModule} from "@angular/material/sort";
+import {ProductFilterComponent} from './products/product-filter/product-filter.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {MatSortModule} from "@angular/material/sort";
     OrdersSuccessComponent,
     ProductsComponent,
     ProductFormComponent,
+    ProductFilterComponent,
   ],
   imports: [
     ReactiveFormsModule,
