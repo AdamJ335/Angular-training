@@ -81,7 +81,7 @@ import {ShoppingCartService} from "./shopping-cart.service";
         component: ProductsComponent
       },
       {
-        path: 'shopping/cart',
+        path: 'shopping-cart',
         component: ShoppingCartComponent
       },
       {
