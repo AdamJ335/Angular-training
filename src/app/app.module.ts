@@ -10,7 +10,6 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {RouterModule} from '@angular/router';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
-import {HomeComponent} from './home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./added-modules/material.module";
 import {OrdersComponent} from './orders/orders.component';
@@ -70,7 +69,7 @@ import {MatSortModule} from "@angular/material/sort";
     RouterModule.forRoot([
       {
         path: '',
-        component: HomeComponent
+        component: ProductsComponent
       },
       {
         path: 'products',

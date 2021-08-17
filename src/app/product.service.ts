@@ -16,7 +16,6 @@ export class ProductService {
 
     return this.db.list('/products')
       .snapshotChanges()
-      // @ts-ignore
       .pipe(map(actions => actions.
         map(this.documentToDomainObject)));
   }
