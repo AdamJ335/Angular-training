@@ -23,7 +23,10 @@ export class ShoppingCartService {
 
   async addToCart(product: Product, productId: any){
     //console.log("addToCard productId: " + productId);
-    await this.updateItem(product, productId);
+    await this.updateQuantityItem(product, productId, 1);
+  }
+  async removeFromCart(product: Product, productId: any){
+    await this.updateQuantityItem(product, productId, -1);
   }
 
   private async getOrCreateCartId() {
@@ -41,12 +44,13 @@ export class ShoppingCartService {
     return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
   }
 
-  private async updateItem(product:Product, productId:any) {
+  private async updateQuantityItem(product:Product, productId:any, change:number) {
     let cartId = await this.getOrCreateCartId();
     let item$ = this.getItem(cartId, productId);
     //console.log(productId);
     item$.snapshotChanges().pipe(take(1)).subscribe(item => {
-      let newQuantity = (item.payload.numChildren() || 0) + 1;
+      let data = item.payload.exportVal();
+      let newQuantity = (data && data.quantity || 0) + change;
       item$.update({product: product, quantity: newQuantity});
     });
   }

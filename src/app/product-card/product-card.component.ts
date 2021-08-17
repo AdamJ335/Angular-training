@@ -17,11 +17,11 @@ export class ProductCardComponent{
 
   addToCart(productId:any){
     //console.log(this.id);
-    // console.log(this.product.id);
-    // console.log(this.product.data.title)
-    // console.log("addToCart this.id: " + this.id);
     this.cartService.addToCart(this.product, productId).then();
 
+  }
+  removeFromCart(productId:any){
+    this.cartService.removeFromCart(this.product, productId).then();
   }
 
   getQuantity(){

@@ -18,13 +18,17 @@
     <ng-template #updateQuantity>
       <div class="mat-toolbar-row">
         <div class="col-2">
-          <button class="btn btn-secondary btnblock">-</button>
+          <button
+            (click)="removeFromCart(product.id)"
+            class="btn btn-secondary btnblock">-</button>
         </div>
         <div class="col text-center">
           {{getQuantity()}} in cart
         </div>
         <div class="col-2">
-          <button class="btn btn-secondary btnblock">+</button>
+          <button
+            (click)="addToCart(product.id)"
+            class="btn btn-secondary btnblock">+</button>
         </div>
       </div>
     </ng-template>
