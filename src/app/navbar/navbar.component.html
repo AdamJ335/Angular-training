@@ -15,6 +15,7 @@
     <div>
         <a mat-button [routerLink]="['/shopping/cart']" routerLinkActive="router-link-active">
             Shopping Cart
+            <span class="badge badge-warning badge-pill">{{shoppingCartItemCount}}</span>
         </a>
       <ng-template #anonymousUser>
         <a
