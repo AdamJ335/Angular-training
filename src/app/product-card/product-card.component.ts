@@ -9,22 +9,13 @@ import {ShoppingCartService} from "../shopping-cart.service";
 export class ProductCardComponent{
   @Input('product') product: any;
   @Input('show-actions') showActions = true;
-  cartId:any;
+
 
   constructor(private cartService: ShoppingCartService) { }
 
   addToCart(product:any){
-    this.cartId = localStorage.getItem('cartId');
-    if (!this.cartId) {
-      this.cartService.create().then(result => {
-        localStorage.setItem('cartId', <string>result.key);
+    this.cartService.addToCart(product);
 
-        //Add product to cart
-      });
-    } else {
-      //Add product to cart
-
-    }
   }
 
 }
