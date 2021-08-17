@@ -14,12 +14,14 @@ export class CategoryService {
       .list('/categories', ref => ref.orderByChild('name'))
       .snapshotChanges();
   }
-
-  getAll() {
-    return this.observableCategories$.pipe(
-      map((changes) => {
-        return changes.map((c:any) => ({key: c.payload.key, ...c.payload.val()}));
-      })
-    );
+  getCategories(): Observable<any> {
+    return this.db.list('/categories',
+      ref => ref.orderByChild('name'))
+      .snapshotChanges().pipe(map(actions => actions.map(this.documentToDomainObject)));
+  }
+  documentToDomainObject = (c: any) => {
+    const data = c.payload.exportVal();
+    const id = c.key;
+    return {id, data};
   }
 }
