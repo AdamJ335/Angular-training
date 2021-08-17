@@ -8,13 +8,15 @@ import {ShoppingCartService} from "../shopping-cart.service";
 })
 export class ProductCardComponent{
   @Input('product') product: any;
+  @Input('id') id!: string;
   @Input('show-actions') showActions = true;
 
 
   constructor(private cartService: ShoppingCartService) { }
 
-  addToCart(product:any){
-    this.cartService.addToCart(product).then();
+  addToCart(){
+    console.log("addToCart this.id: " + this.id);
+    this.cartService.addToCart(this.product, this.id).then();
 
   }
 
