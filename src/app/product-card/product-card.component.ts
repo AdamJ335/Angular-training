@@ -10,14 +10,25 @@ export class ProductCardComponent{
   @Input('product') product: any;
   @Input('id') id!: string;
   @Input('show-actions') showActions = true;
+  @Input('shopping-cart') shoppingCart:any;
 
 
   constructor(private cartService: ShoppingCartService) { }
 
-  addToCart(){
-    console.log("addToCart this.id: " + this.id);
-    this.cartService.addToCart(this.product, this.id).then();
+  addToCart(productId:any){
+    //console.log(this.id);
+    // console.log(this.product.id);
+    // console.log(this.product.data.title)
+    // console.log("addToCart this.id: " + this.id);
+    this.cartService.addToCart(this.product, productId).then();
 
+  }
+
+  getQuantity(){
+    //console.log(this.product.id);
+    if(!this.shoppingCart) { return 0 }
+    let item = this.shoppingCart.items[this.product.id];
+    return item ? item.quantity: 0;
   }
 
 }

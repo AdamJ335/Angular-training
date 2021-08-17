@@ -16,12 +16,13 @@ export class ShoppingCartService {
     });
   }
 
-  private getCart(cartId:string){
+  async getCart(){
+    let cartId = await this.getOrCreateCartId();
     return this.db.object('/shopping-carts/' + cartId);
   }
 
   async addToCart(product: Product, productId: any){
-    console.log("addToCard productId: " + productId);
+    //console.log("addToCard productId: " + productId);
     await this.updateItem(product, productId);
   }
 
@@ -43,7 +44,7 @@ export class ShoppingCartService {
   private async updateItem(product:Product, productId:any) {
     let cartId = await this.getOrCreateCartId();
     let item$ = this.getItem(cartId, productId);
-    console.log(productId);
+    //console.log(productId);
     item$.snapshotChanges().pipe(take(1)).subscribe(item => {
       let newQuantity = (item.payload.numChildren() || 0) + 1;
       item$.update({product: product, quantity: newQuantity});
