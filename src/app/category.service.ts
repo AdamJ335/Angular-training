@@ -15,7 +15,7 @@ export class CategoryService {
       .snapshotChanges();
   }
 
-  getCategories() {
+  getAll() {
     return this.observableCategories$.pipe(
       map((changes) => {
         return changes.map((c:any) => ({key: c.payload.key, ...c.payload.val()}));
