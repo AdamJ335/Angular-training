@@ -1,76 +1,45 @@
+import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CustomFormsModule} from "ng2-validation";
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {RouterModule} from '@angular/router';
+import {CustomFormsModule} from 'ng2-validation';
+import {SharedModule} from 'shared/shared.module';
 
+import {environment} from '../environments/environment';
+import {MaterialModule} from './added-modules/material.module';
+import {AdminModule} from './admin/admin.module';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HttpClientModule} from "@angular/common/http";
-import {NavbarComponent} from './navbar/navbar.component';
-import {NotFoundComponent} from './not-found/not-found.component';
-import {RouterModule} from '@angular/router';
-import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MaterialModule} from "./added-modules/material.module";
-import {MyOrdersComponent} from './my-orders/my-orders.component';
-import {AdminOrdersComponent} from './admin/admin-orders/admin-orders.component';
-import {AdminProductsComponent} from './admin/admin-products/admin-products.component';
-import {AngularFireModule} from "@angular/fire";
-import {AngularFireStorageModule} from "@angular/fire/storage";
-import {AngularFireAuthModule} from "@angular/fire/auth";
-import {AngularFirestoreModule} from "@angular/fire/firestore";
-import {environment} from "../environments/environment";
-import {AngularFireDatabaseModule} from "@angular/fire/database";
-import {LoginComponent} from './login/login.component';
-import {AuthService} from "./auth.service";
-import {AuthGuardService} from "./auth-guard.service";
-import {CheckOutComponent} from './check-out/check-out.component';
-import {OrdersSuccessComponent} from './orders-success/orders-success.component';
-import {ProductsComponent} from './products/products.component';
-import {UserService} from "./user.service";
-import {AdminAuthGuard} from "./admin-auth-guard.service";
-import {ProductFormComponent} from './admin/product-form/product-form.component';
-import {MatRadioModule} from "@angular/material/radio";
-import {CategoryService} from "./category.service";
-import {ProductService} from "./product.service";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatPaginatorModule} from "@angular/material/paginator";
-import {MatTableModule} from "@angular/material/table";
-import {MatInputModule} from "@angular/material/input";
-import {MatSortModule} from "@angular/material/sort";
-import {ProductFilterComponent} from './products/product-filter/product-filter.component';
-import {ProductCardComponent} from './product-card/product-card.component';
-import {ShoppingCartService} from "./shopping-cart.service";
-import {ProductQuantityComponent} from './product-quantity/product-quantity.component';
-import {OrderService} from "./order.service";
-import {ShoppingCartSummaryComponent} from './shopping-cart-summary/shopping-cart-summary.component';
-import {ShippingFormComponent} from './shipping-form/shipping-form.component';
-import {OrderDetailsComponent} from './order-details/order-details.component';
+import {LoginComponent} from './core/components/login/login.component';
+import {NotFoundComponent} from './core/components/not-found/not-found.component';
+import {CoreModule} from './core/core.module';
+import {ProductsComponent} from './shopping/components/products/products.component';
+import {ShoppingModule} from './shopping/shopping.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    NotFoundComponent,
-    ShoppingCartComponent,
-    MyOrdersComponent,
-    AdminOrdersComponent,
-    AdminProductsComponent,
-    LoginComponent,
-    CheckOutComponent,
-    OrdersSuccessComponent,
-    ProductsComponent,
-    ProductFormComponent,
-    ProductFilterComponent,
-    ProductCardComponent,
-    ProductQuantityComponent,
-    ShoppingCartSummaryComponent,
-    ShippingFormComponent,
-    OrderDetailsComponent,
   ],
   imports: [
     ReactiveFormsModule,
     BrowserModule,
+    SharedModule,
+    AdminModule,
+    ShoppingModule,
+    CoreModule,
     FormsModule,
     CustomFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -86,60 +55,9 @@ import {OrderDetailsComponent} from './order-details/order-details.component';
         component: ProductsComponent
       },
       {
-        path: 'products',
-        component: ProductsComponent
-      },
-      {
-        path: 'shopping-cart',
-        component: ShoppingCartComponent
-      },
-      {
         path: 'login',
         component: LoginComponent
       },
-
-
-      {
-        path: 'checkout',
-        component: CheckOutComponent,
-        canActivate: [AuthGuardService]
-      },
-      {
-        path: 'order-success/:id',
-        component: OrdersSuccessComponent,
-        canActivate: [AuthGuardService]
-      },
-      {
-        path: 'orders/:id',
-        component: OrdersSuccessComponent,
-        canActivate: [AuthGuardService]
-      },
-      {
-        path: 'my/orders',
-        component: MyOrdersComponent,
-        canActivate: [AuthGuardService]
-      },
-      {
-        path: 'admin/orders',
-        component: AdminOrdersComponent,
-        canActivate: [AuthGuardService, AdminAuthGuard]
-      },
-      {
-        path: 'admin/products/new',
-        component: ProductFormComponent,
-        canActivate: [AuthGuardService, AdminAuthGuard]
-      },
-      {
-        path: 'admin/products/:id',
-        component: ProductFormComponent,
-        canActivate: [AuthGuardService, AdminAuthGuard]
-      },
-      {
-        path: 'admin/products',
-        component: AdminProductsComponent,
-        canActivate: [AuthGuardService, AdminAuthGuard]
-      },
-
       {
         path: '**',
         component: NotFoundComponent
@@ -153,16 +71,6 @@ import {OrderDetailsComponent} from './order-details/order-details.component';
     MatTableModule,
     MatInputModule,
     MatSortModule,
-  ],
-  providers: [
-    AuthService,
-    AuthGuardService,
-    UserService,
-    AdminAuthGuard,
-    CategoryService,
-    ProductService,
-    ShoppingCartService,
-    OrderService,
   ],
   bootstrap: [AppComponent]
 })
