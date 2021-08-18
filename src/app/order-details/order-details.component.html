@@ -1,0 +1,50 @@
+<div class="col-md-5">
+  <div class="card">
+    <h2 class="card-header fw-bold">
+      Order Details
+    </h2>
+
+    <div class="card-body">
+
+      <ul class="list-group list-group-flush" *ngIf="order$ | async as order">
+        <li class="list-group-item flex-fill">
+          <div class="fw-bold float-start">Name:</div>
+          <div class="float-end">
+            {{order.shipping.name}}
+          </div>
+        </li>
+        <li class="list-group-item flex-fill">
+          <div class="fw-bold float-start">Address:</div>
+          <div class="float-end">
+            <div>{{order.shipping.addressLine1}},</div>
+            <div>{{ order.shipping.addressLine2}},</div>
+            <div>{{ order.shipping.city}}</div>
+          </div>
+        </li>
+        <li class="list-group-item flex-fill">
+          <div class="fw-bold float-start">Date Placed:</div>
+          <div class="float-end">
+            {{order.datePlaced | date}}
+          </div>
+        </li>
+        <li class="list-group-item flex-fill">
+          <div class="fw-bold ">Items:</div>
+          <div *ngFor="let items of order.items">
+            {{ items.quantity }} x {{items.product.title}}:
+            <div class="float-end">
+              {{ items.totalPrice | currency:'GBP':'symbol' }}
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item flex-fill">
+          <div class="fw-bold float-start">Total Price:</div>
+          <div class="float-end">
+            {{order.finalPrice |  currency:'GBP':'symbol'}}
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+

@@ -18,10 +18,15 @@ export class ShoppingCartService {
       .snapshotChanges()
       .pipe(
         map((x:any) => {
-          // console.log(x);
-          //console.log(x.payload.val()['items']);
-          // console.log(x.payload.val().items);
-          //const items = x.items;
+          return new ShoppingCart(x.payload.exportVal().items);
+        })
+      );
+  }
+  async getCartById(cartId:string): Promise<Observable<ShoppingCart>>{
+    return this.db.object('/shopping-carts/' + cartId)
+      .snapshotChanges()
+      .pipe(
+        map((x:any) => {
           return new ShoppingCart(x.payload.exportVal().items);
         })
       );

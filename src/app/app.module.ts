@@ -12,7 +12,7 @@ import {RouterModule} from '@angular/router';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./added-modules/material.module";
-import {OrdersComponent} from './orders/orders.component';
+import {MyOrdersComponent} from './my-orders/my-orders.component';
 import {AdminOrdersComponent} from './admin/admin-orders/admin-orders.component';
 import {AdminProductsComponent} from './admin/admin-products/admin-products.component';
 import {AngularFireModule} from "@angular/fire";
@@ -45,6 +45,7 @@ import {ProductQuantityComponent} from './product-quantity/product-quantity.comp
 import {OrderService} from "./order.service";
 import {ShoppingCartSummaryComponent} from './shopping-cart-summary/shopping-cart-summary.component';
 import {ShippingFormComponent} from './shipping-form/shipping-form.component';
+import {OrderDetailsComponent} from './order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import {ShippingFormComponent} from './shipping-form/shipping-form.component';
     NavbarComponent,
     NotFoundComponent,
     ShoppingCartComponent,
-    OrdersComponent,
+    MyOrdersComponent,
     AdminOrdersComponent,
     AdminProductsComponent,
     LoginComponent,
@@ -65,6 +66,7 @@ import {ShippingFormComponent} from './shipping-form/shipping-form.component';
     ProductQuantityComponent,
     ShoppingCartSummaryComponent,
     ShippingFormComponent,
+    OrderDetailsComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -108,8 +110,13 @@ import {ShippingFormComponent} from './shipping-form/shipping-form.component';
         canActivate: [AuthGuardService]
       },
       {
+        path: 'orders/:id',
+        component: OrdersSuccessComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
         path: 'my/orders',
-        component: OrdersComponent,
+        component: MyOrdersComponent,
         canActivate: [AuthGuardService]
       },
       {
