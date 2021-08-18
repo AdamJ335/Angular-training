@@ -24,9 +24,11 @@ export class ShoppingCartService {
       .snapshotChanges()
       .pipe(
         map((x:any) => {
-          //const items = x.payload.val().items;
-
-          return new ShoppingCart(x.payload.val().items);
+          // console.log(x);
+          //console.log(x.payload.val()['items']);
+          // console.log(x.payload.val().items);
+          //const items = x.items;
+          return new ShoppingCart(x.payload.exportVal().items);
         })
       );
   }
@@ -44,8 +46,8 @@ export class ShoppingCartService {
     if(cartId){ return cartId; }
 
     let result = await this.create();
-    localStorage.setItem('cartId', <any>result.key);
-    return result.key;
+    localStorage.setItem('cartId', result.key as string);
+    return result.key as string;
 
 
 
@@ -58,10 +60,20 @@ export class ShoppingCartService {
     let cartId = await this.getOrCreateCartId();
     let item$ = this.getItem(cartId, productId);
     //console.log(productId);
-    item$.snapshotChanges().pipe(take(1)).subscribe(item => {
-      let data = item.payload.exportVal();
+    item$.snapshotChanges().pipe(take(1)).subscribe(i => {
+      let data = i.payload.exportVal();
+      let item = this.getItem(cartId, productId);
       let newQuantity = (data && data.quantity || 0) + change;
-      item$.update({product: product, quantity: newQuantity});
+
+      if(newQuantity === 0){ item.remove();}
+      else{item$.update({
+        title: product.title,
+        imageUrl: product.imageUrl,
+        price: product.price,
+        quantity: newQuantity
+      });
+      }
+
     });
   }
 }
